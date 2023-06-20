@@ -1,8 +1,12 @@
 #decode QR
 
+import json
 from pyzbar.pyzbar import decode
 from PIL import Image
 
-img = Image.open("/home/princy/Pictures/myQR.png")
+with open('config.json') as f:
+    config = json.load(f)
+
+img = Image.open((config['path']))
 result = decode(img)
 print(result)
